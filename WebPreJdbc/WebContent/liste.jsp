@@ -37,6 +37,8 @@
 				<form action="ClientServlet" method="post">
 					
 					<%-- Commentaire Jsp --%>
+					<%--   The action attribute defines the action to be performed when the form is submitted --%>
+					<%-- hidden: il s'agit d'un champ caché. --%>
 					<input type="hidden" name="id" value='<%=c.getId() %>' /> 
 					<input type="hidden" name="action" value='Editer' />
 					 <input type="submit"value="Edition" /> 
@@ -57,6 +59,9 @@
 		%>
 
 	</table>
+		<form action="ClientServlet" method="post">
+					<input type="hidden" name="action" value='Creer' />
+					 <input type="submit"value="nouveau client" /> 
 
 </body>
 </html>

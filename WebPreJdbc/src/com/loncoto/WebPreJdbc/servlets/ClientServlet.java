@@ -65,7 +65,7 @@ public class ClientServlet extends HttpServlet {
 		
 		String action =  request.getParameter("action");
 		switch (action) {
-		case "editer":
+		case "Editer":
 			
 			int id = Integer.parseInt(request.getParameter("id"));
 			Client c =clientDAO.findByID(id);
@@ -73,7 +73,26 @@ public class ClientServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/edit.jsp").forward(request, response);
 			
 			break;
-
+		
+		case "creer":
+		Client c3= new Client(0, "noname", "test@test.co", 10.0);
+		request.setAttribute("client", c3);
+		getServletContext().getRequestDispatcher("/edit.jsp").forward(request, response);
+		break;
+		
+		case"sauver":
+			
+			Client c2= new Client(Integer.parseInt(request.getParameter("id")), 
+					request.getParameter("nom"), 
+					request.getParameter("email"),
+					Double.parseDouble(request.getParameter("solde") ));
+			
+		
+			
+			clientDAO.save(c2);
+			// redirect vers le http
+			response.sendRedirect("ClientServlet");
+			break;
 		}
 	
 	}
