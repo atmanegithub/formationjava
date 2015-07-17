@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>ExoWeb1</display-name>
+  <display-name>webArticle</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,14 +9,38 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+    <param-name>driverclass</param-name>
+    <param-value>com.mysql.jdbc.Driver</param-value>
+  </context-param>
+  <context-param>
+    <param-name>databaseurl</param-name>
+    <param-value>jdbc:mysql://localhost:3306/basearticle</param-value>
+  </context-param>
+  <context-param>
+    <param-name>login</param-name>
+    <param-value>root</param-value>
+  </context-param>
+  <context-param>
+    <param-name>password</param-name>
+    <param-value></param-value>
+  </context-param>
+  <listener>
+    <listener-class>com.loncoto.ExoWeb1.utils.DatabaseManager</listener-class>
+  </listener>
   <servlet>
     <description></description>
     <display-name>ArticleServlet</display-name>
     <servlet-name>ArticleServlet</servlet-name>
-    <servlet-class>com.loncoto.servlets.ArticleServlet</servlet-class>
+    <servlet-class>com.loncoto.ExoWeb1.servlets.ArticleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ArticleServlet</servlet-name>
     <url-pattern>/ArticleServlet</url-pattern>
+   
+<!--   * prendre tous les url -->
+    <url-pattern>/ArticleServlet/*</url-pattern>
   </servlet-mapping>
 </web-app>
+
+   
